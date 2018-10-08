@@ -45,7 +45,7 @@ def encoder(inputs):
     x = res_block(x, h, kernel_size=(window_size, 1), kernel_initializer=initializer)
 
     # -------
-    x = tf.reshape(x, shape=(-1, h * 20)) # 1280
+    x = tf.reshape(x, shape=(-1, h * 20)) # 2560
     x = tf.layers.dense(x, latent_dim, kernel_initializer=initializer) # 64
     
     x = tf.nn.tanh(x)
