@@ -2,7 +2,8 @@ import soundfile as sf
 import matplotlib.pyplot as plt
 import numpy as np
 
-from config import wave_len
+# from config import wave_len
+wave_len = 2400
 from config import window_size
 from config import data_dim
 from config import latent_dim

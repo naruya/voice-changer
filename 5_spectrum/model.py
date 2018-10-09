@@ -31,11 +31,11 @@ def encoder(inputs):
     # -------
     x = tf.layers.conv2d(x, h, kernel_size=(window_size, 1), strides=(1, 1), padding="same", kernel_initializer=initializer) # 2->h
     x = res_block(x, h, kernel_size=(window_size, 1), kernel_initializer=initializer)
-    x = tf.layers.average_pooling2d(x, (4, 1), (4, 1), padding='same') # 1600*1*h -> 400*1*h
+    x = tf.layers.average_pooling2d(x, (2, 1), (2, 1), padding='same') # 400*1*h -> 200*1*h
     
     # -------
     x = res_block(x, h, kernel_size=(window_size, 1), kernel_initializer=initializer)
-    x = tf.layers.average_pooling2d(x, (4, 1), (4, 1), padding='same') # 400*1*h -> 100*1*h
+    x = tf.layers.average_pooling2d(x, (2, 1), (2, 1), padding='same') # 200*1*h -> 100*1*h
 
     # -------
     x = res_block(x, h, kernel_size=(window_size, 1), kernel_initializer=initializer)
@@ -75,11 +75,11 @@ def decoder(inputs):
 
     # -------
     x = res_block(x, h, kernel_size=(window_size, 1), kernel_initializer=initializer)
-    x = tf.image.resize_nearest_neighbor(x, (x.shape[1] * 4, x.shape[2])) # 400*1*h
+    x = tf.image.resize_nearest_neighbor(x, (x.shape[1] * 2, x.shape[2])) # 200*1*h
 
     # -------
     x = res_block(x, h, kernel_size=(window_size, 1), kernel_initializer=initializer)
-    x = tf.image.resize_nearest_neighbor(x, (x.shape[1] * 4, x.shape[2])) # 1600*1*h
+    x = tf.image.resize_nearest_neighbor(x, (x.shape[1] * 2, x.shape[2])) # 400*1*h
 
     # -------
     x = res_block(x, h, kernel_size=(window_size, 1), kernel_initializer=initializer)

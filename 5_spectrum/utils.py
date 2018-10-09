@@ -12,6 +12,13 @@ def connect(a, b, DEMO=False):
     c = a*np.array([(1-w)]) + b*np.array([w])
     return c[0]
 
+def spectrum(f, rate=48000):
+    F = np.fft.fft(f)
+    freq = np.fft.fftfreq(len(f), d=1.0/rate) # 周波数
+    amp = np.abs(F/(len(f)/2)) # 振幅
+    spe = np.log(amp/(2*1e-5))
+    return spe[:int(len(spe)/2/3)] # 8kHzまでとする
+
 # plt.figure(figsize=(6,2)); 
 # plt.subplot(1,2,1); plt.plot(sigmoid(40))
 # a = np.arange(0,40); b = np.ones(40)*20
