@@ -1,4 +1,4 @@
-# voice-changer
+# voice-changer?
 
 ## tree
 
@@ -14,4 +14,4 @@
 - ae (long input)
 - ae (short input) + semantic regularization
 - vae (short input)
-- ae (スペクトル包絡線 + スペクトル微細構造)
+- ae (スペクトル包絡線 + スペクトル微細構造)?
